@@ -3,18 +3,23 @@ OBJS = $(FILES_C:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 NAME = libftprintf.a
+
 all: $(NAME)
+
 $(NAME): $(OBJS)
 	$(MAKE) -C ./libft all
 	cp libft/libft.a ${NAME}
 	ar rcs $(NAME) $(OBJS)
 	ranlib ${NAME}
+
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C ./libft clean
+
 fclean: clean
 	$(RM) $(NAME)
 	$(MAKE) -C ./libft clean
-re: fclean all
-.PHONY: all bonus clean fclean re
 
+re: fclean all
+
+.PHONY: all bonus clean fclean re
